@@ -27,7 +27,10 @@ if __name__ == '__main__':
         # (1) Range FFT
         Out_1DFFT = np.fft.fft(cur_frame, axis=-1)
         plt.figure(1)
-        plt.plot(abs(Out_1DFFT[1, 1, :]))
+        plt.plot(10*np.log10(abs(Out_1DFFT[1, 1, :])))
+        plt.title("Range FFT")
+        plt.xlabel("Range bin")
+        plt.ylabel("Intensity(dB)")
         plt.pause(0.01)
 
         # (2) Doppler FFT
@@ -38,6 +41,9 @@ if __name__ == '__main__':
         Out_2DFFT_log = 10*np.log10(abs(Out_2DFFT))
         plt.figure(2)
         plt.imshow(Out_2DFFT_log[:, 1, :], aspect='auto', cmap='jet')
+        plt.title("Range Doppler FFT heatmap")
+        plt.xlabel("Doppler bin")
+        plt.ylabel("Range bin")
         plt.pause(0.01)
 
 
